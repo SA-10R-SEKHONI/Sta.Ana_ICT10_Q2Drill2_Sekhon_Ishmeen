@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volleyball Club Member</title>
+
+    <!-- PyScript setup -->
+    <link rel="stylesheet"
+          href="https://pyscript.net/releases/2024.11.1/core.css">
+    <script type="module"
+            src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+    margin: 0;
+    padding: 35px 18px;
+    font-family: Arial, sans-serif;
+    color: #183153;
+
+    background-image: linear-gradient(
+        rgba(220, 241, 242, 0.75),
+        rgba(91, 96, 103, 0.75)
+    ), url("bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #163057, #256ed3);
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 22px #12366b25;
+        }
+
+        .volleyball {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #dceaff;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid #d9e6fb;
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 18px #234e8710;
+        }
+
+        h2 {
+            color: #12366b;
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 13px;
+            margin: 14px 0 7px;
+        }
+
+        input, select {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #c9d9f2;
+            border-radius: 8px;
+            background: #f5f8ff;
+            color: #183153;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid #93b9ff;
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            background: #2563eb;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #174fc5;
+        }
+
+        .grade-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .grade-card {
+            padding: 15px 8px;
+            text-align: center;
+            background: #eaf2ff;
+            border: 1px solid #cfe0ff;
+            border-radius: 10px;
+        }
+
+        .grade-card strong {
+            display: block;
+            color: #12366b;
+            font-size: 14px;
+        }
+
+        .grade-card span {
+            display: block;
+            color: #587196;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .roster {
+            padding: 18px;
+            background: #edf4ff;
+            border: 1px solid #d5e4fb;
+            border-radius: 10px;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+        }
+
+        .roster-title {
+            font-weight: bold;
+            color: #12366b;
+            margin-bottom: 8px;
+        }
+
+        .member-list {
+            font-size: 14px;
+            color: #23446f;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #cbdcf5;
+            padding-top: 13px;
+            margin-top: 14px;
+            font-weight: bold;
+            color: #12366b;
+        }
+
+        .total-number {
+            background: #2563eb;
+            color: white;
+            padding: 4px 13px;
+            border-radius: 20px;
+        }
+
+        #message {
+            font-size: 13px;
+            color: #174fc5;
+            min-height: 18px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #f9fafb;
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        @media (max-width: 520px) {
+            .grade-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+
+        <!-- Website heading -->
+        <header class="header">
+            <div class="volleyball">🏐</div>
+            <h1>VOLLEYBALL CLUB</h1>
+            <p class="subtitle">
+              FRIENDSHIP BEGINS WHILE TEAMWORK WINS
+            </p>
+        </header>
+
+        <!-- Member registration form -->
+        <section class="panel">
+            <h2>＋ Add a Club Member</h2>
+
+            <label for="first-name">First Name</label>
+            <input
+                id="first-name"
+                type="text"
+                placeholder="Enter first name"
+            >
+
+            <label for="last-name">Last Name</label>
+            <input
+                id="last-name"
+                type="text"
+                placeholder="Enter last name"
+            >
+
+            <label for="grade-level">Grade Level</label>
+            <select id="grade-level">
+                <option value="Grade 7">Grade 7</option>
+                <option value="Grade 8">Grade 8</option>
+                <option value="Grade 9">Grade 9</option>
+                <option value="Grade 10">Grade 10</option>
+            </select>
+
+            <!-- Will run Python function. -->
+            <button type="button" py-click="add_member">
+                + Add Member to Roster
+            </button>
+
+            <p id="message" aria-live="polite"></p>
+        </section>
+
+
+        <section class="panel">
+            <h2>Grade Levels</h2>
+
+            <div class="grade-grid">
+                <div class="grade-card">
+                    <strong>GRADE 7</strong>
+                    <span>Junior Players</span>
+                </div>
+
+                <div class="grade-card">
+                    <strong>GRADE 8</strong>
+                    <span>Junior Players</span>
+                </div>
+
+                <div class="grade-card">
+                    <strong>GRADE 9</strong>
+                    <span>Junior Players</span>
+                </div>
+
+                <div class="grade-card">
+                    <strong>GRADE 10</strong>
+                    <span>Junior Players</span>
+                </div>
+            </div>
+
+            <h2>Club Members</h2>
+
+            <!-- Member list and total here. -->
+            <div id="results" class="roster">
+                <div class="roster-title">
+                    Loading volleyball club roster...
+                </div>
+            </div>
+        </section>
+
+        <p class="footer">
+            VOLLEYBALL CLUB | PLAY AS ONE 💙
+        </p>
+
+    </main>
+
+    <!-- Separate Python file. -->
+    <script type="py" src="./main.py"></script>
+</body>
+</html>
